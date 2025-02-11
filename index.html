@@ -11,11 +11,9 @@
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
+        #map {
+            width: 2335px;
+            height: 1167px;
         }
         </style>
         <title></title>
@@ -51,8 +49,8 @@
             }
         }
         var map = L.map('map', {
-            zoomControl:false, maxZoom:20, minZoom:1
-        }).fitBounds([[22.53337541653818,-132.4029082095494],[50.68492820921613,-60.623892967863846]]);
+            zoomControl:false, maxZoom:28, minZoom:1
+        }).fitBounds([[24.129486314160648,-131.86448867816082],[51.77341285917883,-60.0854734364753]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -103,16 +101,14 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2" style="text-align: center;"><h2 style="font-size: 1.7em; font-weight: bold;">' 
-                + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + 
-                '</h2></td>\
+                        <td colspan="2"><strong>State</strong><br />' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="university"colspan="2"><strong>University</strong><br />' + (feature.properties['university'] !== null ? autolinker.link(feature.properties['university'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Webpage</th>\
-                        <td class="visible-with-data" id="wepage"><br />' + (feature.properties['wepage'] !== null ? autolinker.link(feature.properties['wepage'].toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="wepage">' + (feature.properties['wepage'] !== null ? autolinker.link(feature.properties['wepage'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
